@@ -42,4 +42,4 @@ Open http://localhost:3000 to view it in your postman and run api endpoints.
 ```bash
 npm test
 ```
-For more, Open this [link](https://docs.google.com/document/d/1IQdAW_11Qgz84WhITyruV668rFcgKnJFPPdqYFOgIHU/edit)
+For routes and strategy, Open this [link](https://docs.google.com/document/d/1IQdAW_11Qgz84WhITyruV668rFcgKnJFPPdqYFOgIHU/edit)
