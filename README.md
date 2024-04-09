@@ -28,7 +28,10 @@ Create, Read customers (Registration)
 Create and read wallets of customers
 Create and read transactions.
 
-## Available Scripts
+## Available Scripts & How to run
+
+First run ``` git clone https://github.com/Irakoze-Hortance/rssb-e-wallet/ ```
+and then
 ```bash
 node server.js
 ```
