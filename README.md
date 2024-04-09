@@ -28,6 +28,9 @@ Create, Read customers (Registration)
 Create and read wallets of customers
 Create and read transactions.
 
+## Database Design
+![image](https://github.com/Irakoze-Hortance/rssb-e-wallet/assets/54577367/b00e6d1c-e370-4971-8d18-d39585e753fb)
+
 ## Available Scripts & How to run
 
 First run ``` git clone https://github.com/Irakoze-Hortance/rssb-e-wallet/ ```
@@ -43,3 +46,5 @@ Open http://localhost:3000 to view it in your postman and run api endpoints.
 npm test
 ```
 For routes and strategy, Open this [link](https://docs.google.com/document/d/1IQdAW_11Qgz84WhITyruV668rFcgKnJFPPdqYFOgIHU/edit)
+
+
