@@ -5,6 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 const uuid = uuidv4();
 const truncatedUuid = uuid.replace(/-/g, '').slice(0, 6);
 
+//wallet controller file
 
 exports.updateWallet = (req, res) => {
     const id = req.params.id;
@@ -40,7 +41,7 @@ exports.deposit = async (req, res) => {
         // Log the deposit action
         await ActivityLog.create({
             walletId: wallet.id,
-            transactionId: null, // Since it's a deposit, transactionId is null
+            transactionId: null,
             action: 'deposit'
         });
 
@@ -63,10 +64,13 @@ exports.withdraw = async(req, res) => {
         wallet.balance -= amount;
         await wallet.save();
 
-        // Log the deposit action
 
-
-        return res.status(200).send({ message: 'Deposit successful!' });
+        await ActivityLog.create({
+            walletId: wallet.id,
+            transactionId: null, 
+            action: 'withdraw'
+        });
+        return res.status(200).send({ message: 'Withdraw successful!' });
     } catch (error) {
         return res.status(500).send({ message: error.message });
     }

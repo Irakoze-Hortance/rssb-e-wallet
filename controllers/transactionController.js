@@ -11,6 +11,8 @@ const sequelize = new Sequelize('tekana', 'root', 'Habumuremyi', {
     dialect: 'mysql' 
   });
 
+//transaction controller file
+
 exports.createTransaction = (req, res) => {
     const { amount, status, senderAccountId, receiverAccountId } = req.body;
     Transaction.create({
@@ -120,6 +122,12 @@ exports.processTransaction = async (transactionId) => {
             throw new Error('Transaction not found');
         }
 
+        //check if transaction is already processed
+        if (transaction.status === 'success') {
+            await t.rollback();
+            return { success: false, message: 'Transaction already processed', status: 'success' };
+        }
+
         // Retrieve sender and receiver wallet details
         const senderWallet = await Wallet.findOne({ where: { customerId: transaction.senderAccountId }, transaction: t });
         const receiverWallet = await Wallet.findOne({ where: { customerId: transaction.receiverAccountId }, transaction: t });
@@ -132,6 +140,7 @@ exports.processTransaction = async (transactionId) => {
             await t.rollback();
             return { success: false, message: 'Sender and receiver wallets cannot be the same', status: 'cancelled' };
         }
+
 
         // Validate sender has sufficient balance
         if (senderWallet.balance < transaction.amount) {

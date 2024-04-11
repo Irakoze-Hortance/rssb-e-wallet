@@ -6,7 +6,7 @@ const TransactionController = require('../controllers/transactionController');
 router.post('/create', TransactionController.createTransaction);
 
 // Update an existing transaction
-router.put('/transactions/:id', TransactionController.updateTransaction);
+router.put('/edit/:id', TransactionController.updateTransaction);
 
 // Get all transactions
 router.get('/transactions', TransactionController.getTransactions);

@@ -1,9 +1,10 @@
 const { DataTypes,Sequelize } = require('sequelize');
-
-const sequelize = new Sequelize('database', 'user', 'password', {
+const Wallet = require('./wallet.model');
+const sequelize = new Sequelize('tekana', 'root', 'Habumuremyi', {
     host: 'localhost',
     dialect: 'mysql' 
   });
+
 
 const Customer = sequelize.define('Customer', {
     // Model attributes are defined here
@@ -47,5 +48,9 @@ Customer.associate = (models) => {
     });
     return Customer;
 };
+Customer.hasOne(Wallet, {
+    foreignKey: 'customerId',
+    onDelete: 'CASCADE'
+});
 
 module.exports = Customer;
